@@ -53,6 +53,7 @@ namespace Store_the_screenshot
 
         private async void StoreClick(object sender, RoutedEventArgs e)
         {
+            ProgressArea.Visibility = Visibility.Visible;
             StorageFolder savedPicturesFolder = KnownFolders.SavedPictures;
             var screenshotFolder = await savedPicturesFolder.GetFolderAsync("Screenshots");//temporary way
             var screenshots = await screenshotFolder.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.OrderByName);

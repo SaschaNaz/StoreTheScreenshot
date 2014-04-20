@@ -5,16 +5,30 @@
     xmlns:local="using:Store_the_screenshot"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    d:DesignWidth="645">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel x:Name="ImageArea">
+        <StackPanel x:Name="ImageArea" Margin="50,20,50,20">
             <TextBlock TextWrapping="Wrap" Style="{ThemeResource SubheaderTextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left">
                 Store your screenshot
             </TextBlock>
-            <TextBlock x:Name="ImageLabel" FontWeight="Bold" Text="Bitmap:" Style="{ThemeResource BodyTextBlockStyle}" />
-            <Image x:Name="ImageHolder" HorizontalAlignment="Left" MaxWidth="300" Source="images/placeholder-sdk.png" AutomationProperties.AutomationId="Bitmap"/>
+            <TextBlock TextWrapping="Wrap" Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Margin="0,10,0,0" >
+                Stored images can be found at Screenshots folder.
+            </TextBlock>
+            <Border BorderThickness="4" BorderBrush="Beige" Margin="10,40,10,10">
+                <Image x:Name="ImageHolder" HorizontalAlignment="Stretch" Source="images/placeholder-sdk.png" AutomationProperties.AutomationId="Bitmap"/>
+            </Border>
             <Button Content="Store" Click="StoreClick"></Button>
+            <Grid x:Name="ProgressArea" Margin="0,20,0,0" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ProgressRing IsActive="True" />
+                <TextBlock x:Name="StatusText" Grid.Column="2" TextWrapping="Wrap" Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Left" TextAlignment="Left" Text="Saving..." />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>
